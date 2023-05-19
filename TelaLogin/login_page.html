@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="stlyle_Login_page.css">
+    <link rel="icon" type="image/x-icon" href="../PagInicial/imagens_e_fontes/logo.png">
+
+</head>
+
+<body>
+
+    <main>
+        <div class="header">
+            <div class="container">
+                <a href="../PagInicial/index.html">
+                    <img id="logo" src="./imagens/logo.png">
+                </a>
+            </div>
+            <div id="img_principal">
+                
+                <img id="spiderLogin" src="./imagens/spiderLogin.png">
+                
+            </div>
+        </div>
+
+        <div id="login">
+            <form action="" class="form">
+                <h1 class="text-center">LOGIN</h1>
+
+
+                <div class="input-group">
+
+                    <label for="email">EMAIL</b></label>
+                    <input id="input_email" autocomplete="off" type="email" name="email" placeholder="Peter_Parker@Gmail.com"
+                        required="required" maxlength="100">
+
+                </div>
+                <div class="input-group">
+
+                    <label for="senha">SENHA</b></label>
+                    <input id="input_senha" ; type="password" autocomplete="off" type="text" name="senha"
+                        placeholder="password" required="required" maxlength="18" minlength="18">
+                    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+                    <div id="conectado">
+                        <input id="check" type="checkbox" checked="checked">
+                        <p>Mantenha-me conectado</p>
+
+                    </div>
+
+                    <div class="btns-group">
+                        <a onclick="abrirAlert()" href="#" class="btn">ENTRAR</a>
+                    </div>
+
+                   
+                </div>
+                <div id="forgot">
+                    <a href="#">
+                    <u>
+                        Esqueceu sua senha?
+                    </u>
+                </a>
+
+                </div>
+            </form>
+
+        </div>
+
+    </main>
+
+</html>
+</body>
+
+</html>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+
+   function abrirAlert(){
+    var email = input_email.value
+    var senha = input_senha.value
+    if(email == "featherfarm@gmail.com" && senha ==="Corinthians"){
+    swal({
+        
+  title: "Olá!",
+  text: "Seja bem-vindo!",
+  icon: "success",
+}).then(function() {
+            // redireciona para outra página
+            window.location.href = "../DashBoard/index.html";
+        });
+    }
+    if(email == "sadia@gmail.com" && senha ==="123"){
+    swal({
+        
+  title: "Olá!",
+  text: "Seja bem-vindo!",
+  icon: "success",
+}).then(function() {
+            // redireciona para outra página
+            window.location.href = "../DashBoard/index.html";
+        });
+    } else { swal({
+        
+        title: "Ops!",
+        text: "email ou senha invalidos",
+        icon: "error",
+      });}
+   }
+
+</script>
+
