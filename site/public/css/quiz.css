@@ -1,0 +1,105 @@
+/* Importando fontes diretamente do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Montserrat:wght@800&family=Raleway:wght@400;600&family=Rubik+Mono+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+body{
+    width: 100vw;
+    margin: 0;
+    margin-top: 8px;
+    padding: 0;
+    background: linear-gradient(90deg, rgb(15, 18, 66) 0%, #020318 100%);
+    color: #ECF8E5;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-conteudo {
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    height: 100vh;
+    padding: 5%;
+    backdrop-filter: blur(40px);
+    border-radius: 15px;
+    border: 2px solid #ff0101;
+    box-shadow: 2px 4px 10px #050216;
+}
+
+.aviso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .container-conteudo h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #EBD937;
+    margin-bottom: 15px;
+} */
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+}
+
+.questoes ol li {
+    display: block;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ff0101;
+}
+
+.questoes ol li:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+    color: #121212;
+    border: 2px solid #ff0101;
+}
+
+.bloqueado {
+    display: none;
+}
+.bloqueado li:hover {
+    display: none;
+}
+
+#instrucoes {
+    /* background-color: #EBD937; */
+    color: #ffffff;
+    padding: 0.625rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    animation: piscar .75s infinite alternate;
+}
+
+#pergunta {
+    font-size: 15px;
+}
+
+.pics{
+    display:flex;
+    z-index: 999;
+    width: 100px;
+    height:100px;
+
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="icon" type="imagem/png" href="./assets/imagens/index/logoComNome.png" />
+
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="container">
+        <img id="formIMG" src="./assets/imagens/cadastro/formIMG.png">
+        <form onsubmit="return false" action="login.html" class="form">
+            <h1 class="text-center">Cadastro</h1>
+
+
+
+
+            <div class="card card-cadastro">
+                <div class="formulario">
+
+                    <!--
+                         Para inserir mais um campo, copie uma das inputs abaixo.
+                         Assim que inserir vá para o script abaixo.
+                     -->
+
+                    <div class="campo">
+                        <span>NOME:</span>
+                        <input id="ipt_nome" type="text" placeholder="PETER">
+                    </div>
+                    <div class="campo">
+                        <span>SOBRENOME:</span>
+                        <input id="ipt_sobrenome" type="text" placeholder="PARKER">
+                    </div>
+                    <div class="campo">
+                        <span>E-MAIL:</span>
+                        <input id="ipt_email" type="text" placeholder="Peter_parker@gmail.com">
+                    </div>
+                    <div class="campo">
+                        <span>SENHA:</span>
+                        <input id="ipt_senha" type="password" placeholder="******">
+                    </div>
+                    <div class="campo">
+                        <span>Confirmação da Senha:</span>
+                        <input id="ipt_confirmarSenha" type="password" placeholder="******">
+                    </div>
+                    <div class="btns-group">
+                        <button onclick='cadastrar()' class="btn-cadastro">CADASTRE-SE</button>
+
+                    </div>
+
+
+
+
+                </div>
+
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    // document.querySelector(".btn-cadastro").addEventListener("click", () => {
+
+    // })
+    function cadastrar() {
+        var nome = ipt_nome.value;
+        var sobrenome = ipt_sobrenome.value;
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+        var confirmarSenha = ipt_confirmarSenha.value
+
+        if (nome == "" || sobrenome == "" || email == "" || senha == "" || confirmarSenha == "") {
+            alert("Os campos não podem ser vazios!")
+        } else if (confirmarSenha != senha) {
+            alert("A confirmação da senha não é igual a senha")
+        } else if (email.indexOf("@") == -1 || email.startsWith("@") == true || email.endsWith("@") == true || email.startsWith(".") == true || email.endsWith(".") == true || email.length <= 3) {
+            alert("Insira um email válido!")
+        } else if (senha.length < 6) {
+            alert("A senha deve ter no mínimo 6 caracteres")
+        } else {
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    sobrenomeServer: sobrenome,
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(res => {
+                if (res.ok) {
+                    alert("Cadastro efetuado! Redirecionando...")
+                    setInterval(redirecionarLogin(), 3000)
+                } else if (!res.ok) {
+                    alert("Email já em uso!")
+                }
+                console.log(res)
+            })
+        }
+       
+    }
+    function redirecionarLogin() {
+            window.location.href = "./login.html"
+        }
+</script>

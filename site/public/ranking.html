@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/ranking.css">
+
+    <link rel="icon" type="imagem/png" href="./assets/imagens/index/logoComNome.png" />
+    
+    <title>Ranking!</title>
+</head>
+
+<body>
+
+
+
+    <header>
+        <div class="container">
+            <div class="logo_header">
+                <a href="./index.html"><img src="./assets/imagens/quiz/logoComNome.png" alt=""></a>
+            </div>
+            <div class="botoes_header">
+                <a href="./quiz.html"><button>Tentar Novamente</button></a>
+
+
+
+            </div>
+        </div>
+    </header>
+
+    <div class="app">
+        <div id="tituloResultado">
+            <h3 class="ranking"> Ranking das pontuações</h3>
+        </div>
+        <div id="quiz-body">
+            <div id="resultado" style="display: flex">
+                <select id="selecionar">
+                    <option value="1">TOP 5</option>
+                    <option value="2">SUAS TENTATIVAS</option>
+                    
+                </select>
+                <button onclick="filtrar()" class="btn-filtrar"> Filtrar</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Pontos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registros">
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+
+
+
+
+
+    filtrar();
+
+    function filtrar() {
+        var filtro = selecionar.value
+        var id = sessionStorage.getItem('id')
+        fetch(`/usuarios/listarPlacar/?filtro=${filtro}&id=${id}`, {
+            cache: "no-store",
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        exibirDados(resposta);
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function exibirDados(resposta) {
+        registros.innerHTML = ``
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            var nome = resposta[i].nome;
+            var pontos = registro.pontuacao;
+            registros.innerHTML += `<tr><td>${nome}</td><td>${pontos}</td></tr>`;
+            console.log(pontos);
+            resultado.style.display = "block";
+            tituloResultado.style.display = "block";
+        }
+    }
+</script>

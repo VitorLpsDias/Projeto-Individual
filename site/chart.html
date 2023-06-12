@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="display: flex;">
+    <div>
+        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+    </div>
+
+    <div>
+        <canvas id="myChart2" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+    </div>
+</body>
+<script>
+   
+
+   var posicoes = [
+    '1º',
+    '2º',
+    '3º',
+    '4º',
+    '5º',
+    '6º',
+    '7º',
+    '8º',
+    '9º',
+    '10º',
+]
+
+    const data2 = {
+        labels: posicoes,
+        datasets: [{
+        label:'Temperatura Média',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [],
+        },
+    
+       {
+        label:'Pontuação',
+        backgroundColor: 'rgb(0, 0, 255)',
+        borderColor: 'rgb(0, 0, 255)',
+        data: [],
+        }
+    ]
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {}
+    };
+</script>
+
+<script>
+ 
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+    
+    
+</script>
+</html>

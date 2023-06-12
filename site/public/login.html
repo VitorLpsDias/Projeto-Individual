@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" type="imagem/png" href="./assets/imagens/index/logoComNome.png" />
+
+</head>
+
+<body>
+
+    <main>
+        <div class="header">
+
+            <div id="img_principal">
+
+                <img id="spiderLogin" src="assets/imagens/login/spiderLogin.png">
+
+            </div>
+        </div>
+
+        <div id="login">
+            <form onsubmit="return false" action=".html" class="form">
+                <h1 class="text-center">LOGIN</h1>
+
+
+                <div class="input-group">
+
+                    <label for="ipt_email">EMAIL</b></label>
+                    <input id="ipt_email" autocomplete="off" type="email" name="email"
+                        placeholder="Peter_Parker@Gmail.com" required="required" maxlength="100">
+
+                </div>
+                <div class="input-group">
+
+                    <label for="ipt_senha">SENHA</b></label>
+                    <input id="ipt_senha" ; type="password" autocomplete="off" type="text" name="senha"
+                        placeholder="password" required="required" maxlength="18" minlength="18">
+                    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+                    <div id="conectado">
+                        <input id="check" type="checkbox" checked="checked">
+                        <p>Mantenha-me conectado</p>
+
+                    </div>
+
+                    <div class="btns-group">
+                        <button class="btn-login">LOGIN</button>
+                    </div>
+
+
+                </div>
+                
+            </form>
+
+        </div>
+
+    </main>
+
+</html>
+</body>
+
+</html>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+
+    document.querySelector(".btn-login").addEventListener("click", () => {
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            } else if (email == "") {
+                alert("O campo do email está vazio!")
+            } else if (senha == "") {
+                alert("O campo da senha está vazio!")
+            } else {
+                alert(`Email ou senha errados!\nOu a conta não existe!`)
+            }
+        }).then(resposta => {
+            efetuarLogin(resposta)
+        })
+    })
+
+    function efetuarLogin(resposta) {
+        sessionStorage.ID_USUARIO = resposta.id
+        sessionStorage.NOME_USUARIO = resposta.nome
+        sessionStorage.EMAIL_USUARIO = resposta.email
+        window.location.href = "/quiz.html"
+    }
+
+
+</script>
