@@ -28,4 +28,8 @@ router.get("/listarPlacar", function (req, res) {
     usuarioController.listarPlacar(req, res);
 });
 
+router.post("/jogar", function (req, res){
+    usuarioController.jogar(req, res)
+})
+
 module.exports = router;

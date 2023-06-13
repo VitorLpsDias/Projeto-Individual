@@ -33,7 +33,21 @@ header .container {
     justify-content: space-between;
     align-items: center;
 }
-
+.tabela{
+  justify-content: space-around;
+  color: #f1efef;
+  
+}
+.coluna{
+  background-color: rgb(30, 35, 175);
+  justify-content: space-around;
+  color: #f1efef;
+}
+#resultado{
+  justify-content: space-between;
+  background-image: url(../assets/imagens/quiz/quiz.jpg) ;
+  color: #f1efef;
+}
 .logo_header {
     margin: 5px 0px 5px 40px;
 }
@@ -123,7 +137,7 @@ header .container {
  
   
   .btn-filtrar{
-    background: linear-gradient(90deg, rgb(113, 7, 7) 0%, #000000 100%);
+    background-color: rgb(30, 35, 175);
     color: #fff;
     font-weight: 500;
     width: 120px;

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="icon" type="imagem/png" href="./assets/imagens/index/logoComNome.png" />
-
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <title>Cadastro</title>
 </head>
 
@@ -63,6 +64,7 @@
 </body>
 
 </html>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     // document.querySelector(".btn-cadastro").addEventListener("click", () => {
 
@@ -75,13 +77,43 @@
         var confirmarSenha = ipt_confirmarSenha.value
 
         if (nome == "" || sobrenome == "" || email == "" || senha == "" || confirmarSenha == "") {
-            alert("Os campos não podem ser vazios!")
+            Swal.fire({
+  title: 'Os campos devem ser preenchidos',
+  text: '',
+  imageUrl: 'https://cdn.vox-cdn.com/thumbor/Lft1HT_lX-ZeGamC8GCStEuf6fc=/0x0:1280x721/1120x0/filters:focal(0x0:1280x721):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/23265504/Spider_Man_meme.jpg',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
         } else if (confirmarSenha != senha) {
-            alert("A confirmação da senha não é igual a senha")
+            Swal.fire({
+  title: 'Os campos devem ser preenchidos',
+  text: '',
+  imageUrl: 'https://cdn.vox-cdn.com/thumbor/Lft1HT_lX-ZeGamC8GCStEuf6fc=/0x0:1280x721/1120x0/filters:focal(0x0:1280x721):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/23265504/Spider_Man_meme.jpg',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
         } else if (email.indexOf("@") == -1 || email.startsWith("@") == true || email.endsWith("@") == true || email.startsWith(".") == true || email.endsWith(".") == true || email.length <= 3) {
-            alert("Insira um email válido!")
+            
+            Swal.fire({
+  title: 'Insira um email válido!',
+  text: '',
+  imageUrl: 'https://cdn.vox-cdn.com/thumbor/Lft1HT_lX-ZeGamC8GCStEuf6fc=/0x0:1280x721/1120x0/filters:focal(0x0:1280x721):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/23265504/Spider_Man_meme.jpg',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
         } else if (senha.length < 6) {
-            alert("A senha deve ter no mínimo 6 caracteres")
+            
+            Swal.fire({
+  title: 'A senha deve ter no mínimo 6 caracteres',
+  text: '',
+  imageUrl: 'https://cdn.vox-cdn.com/thumbor/Lft1HT_lX-ZeGamC8GCStEuf6fc=/0x0:1280x721/1120x0/filters:focal(0x0:1280x721):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/23265504/Spider_Man_meme.jpg',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
         } else {
             fetch("/usuarios/cadastrar", {
                 method: "POST",

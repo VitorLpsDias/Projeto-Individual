@@ -38,15 +38,16 @@
             <div id="resultado" style="display: flex">
                 <select id="selecionar">
                     <option value="1">TOP 5</option>
-                    <option value="2">SUAS TENTATIVAS</option>
                     
+                    <option value="3">Geral</option>
                 </select>
-                <button onclick="filtrar()" class="btn-filtrar"> Filtrar</button>
-                <table>
-                    <thead>
-                        <tr>
+                <button onclick="filtrar()" class="btn-filtrar"> ver</button>
+                <table >
+                    <thead class="tabela">
+                        <tr class="coluna">
                             <th>Nome</th>
                             <th>Pontos</th>
+                            <th>Porcentagem de acertos</th>
                         </tr>
                     </thead>
                     <tbody id="registros">
@@ -97,7 +98,8 @@
             var registro = resposta[i];
             var nome = resposta[i].nome;
             var pontos = registro.pontuacao;
-            registros.innerHTML += `<tr><td>${nome}</td><td>${pontos}</td></tr>`;
+            var porcentagem = pontos * 2
+            registros.innerHTML += `<tr><td>${nome}</td><td>${pontos}</td><td>${porcentagem}%</td></tr>`;
             console.log(pontos);
             resultado.style.display = "block";
             tituloResultado.style.display = "block";

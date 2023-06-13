@@ -30,7 +30,7 @@
             <li id="a" value="1A" class="respostas" onclick="verificarAcerto(this, this)"></li>
             <li id="b" value="1B" class="respostas" onclick="verificarAcerto(this, this)"></li>
             <li id="c" value="1C" class="respostas" onclick="verificarAcerto(this, this)"></li>
-            <img id="myimg" src="https://cdn.sstatic.net/Sites/br/Img/apple-touch-icon.png?v=e57f45c9cfaf%22/%3E">
+            
 
           </ol>
         </div>
@@ -247,7 +247,7 @@
     console.log(certa);
 
     if (respostaEscolhida == certa) {
-      pontos += 10;
+      pontos += 5;
     } 
 
     // Atualizando placar
@@ -258,7 +258,7 @@
     bloquearAlternativas();
 
     setTimeout(function () {
-      document.getElementById("myimg").src = 
+      
       proxima = numeroDaQuestao + 1;
      
       // Verificando se estou no final das questões
